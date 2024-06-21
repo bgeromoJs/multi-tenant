@@ -1,0 +1,175 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2",
+        "author": "root",
+        "changes": [
+          {
+            "insert": {
+              "tableName": "DATASOURCECONFIG",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "valueNumeric": 1
+                  }
+                },
+                {
+                  "column": {
+                    "name": "driverclassname",
+                    "value": "com.mysql.cj.jdbc.Driver"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "url",
+                    "value": "jdbc:mysql://localhost:3306/db_config"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "value": "config"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "username",
+                    "value": "root"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "password",
+                    "value": "sirius"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "initialize",
+                    "valueBoolean": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2",
+        "author": "seu-nome",
+        "changes": [
+          {
+            "insert": {
+              "tableName": "DATASOURCECONFIG",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "valueNumeric": 2
+                  }
+                },
+                {
+                  "column": {
+                    "name": "driverclassname",
+                    "value": "com.mysql.cj.jdbc.Driver"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "url",
+                    "value": "jdbc:mysql://localhost:3307/db_config"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "value": "tenant1"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "username",
+                    "value": "root"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "password",
+                    "value": "tenant1"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "initialize",
+                    "valueBoolean": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "3",
+        "author": "root",
+        "changes": [
+          {
+            "insert": {
+              "tableName": "DATASOURCECONFIG",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "valueNumeric": 3
+                  }
+                },
+                {
+                  "column": {
+                    "name": "driverclassname",
+                    "value": "com.mysql.cj.jdbc.Driver"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "url",
+                    "value": "jdbc:mysql://localhost:3308/db_config"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "value": "tenant2"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "username",
+                    "value": "root"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "password",
+                    "value": "tenant2"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "initialize",
+                    "valueBoolean": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
