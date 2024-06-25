@@ -2,7 +2,7 @@
   "databaseChangeLog": [
     {
       "includeAll": {
-        "path": "./changes",
+        "path": "./config",
         "relativeToChangelogFile": true
       }
     }

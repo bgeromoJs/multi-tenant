@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -42,4 +43,15 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl extends AbstractDa
         }
         return map.get(tenantIdentifier) != null ? map.get(tenantIdentifier) : map.get(MultiTenantConstants.DEFAULT_TENANT_ID);
     }
+
+    public DataSourceConfig getDataSourceConfigByName (String name) {
+        TenantDataSource tenantDataSource = context.getBean(TenantDataSource.class);
+        return tenantDataSource.getDataSourceConfigByTenant(name);
+    }
+
+    public Module getModuleByName (String name) {
+        TenantDataSource tenantDataSource = context.getBean(TenantDataSource.class);
+        return tenantDataSource.getModuleByName(name);
+    }
+
 }

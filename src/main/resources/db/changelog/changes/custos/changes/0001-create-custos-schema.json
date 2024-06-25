@@ -7,12 +7,12 @@
         "changes": [
           {
             "sql": {
-              "sql": "CREATE SCHEMA IF NOT EXISTS cadastros"
+              "sql": "CREATE SCHEMA IF NOT EXISTS custos"
             }
           },
           {
             "createTable": {
-              "schemaName": "cadastros",
+              "schemaName": "custos",
               "tableName": "user",
               "columns": [
                 {

@@ -1,0 +1,31 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "4",
+        "author": "root",
+        "changes": [
+          {
+            "insert": {
+              "tableName": "MODULE",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "valueNumeric": 1
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "value": "cadastros"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

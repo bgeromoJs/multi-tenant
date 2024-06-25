@@ -1,0 +1,66 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "3",
+        "author": "autor",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "DATASOURCECONFIG_MODULE",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "type": "BIGINT",
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "datasource_config_id",
+                    "type": "BIGINT",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "module_id",
+                    "type": "BIGINT",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "addForeignKeyConstraint": {
+              "constraintName": "fk_datasourceconfig_module_datasourceconfig",
+              "baseTableName": "DATASOURCECONFIG_MODULE",
+              "baseColumnNames": "datasource_config_id",
+              "referencedTableName": "DATASOURCECONFIG",
+              "referencedColumnNames": "id"
+            }
+          },
+          {
+            "addForeignKeyConstraint": {
+              "constraintName": "fk_datasourceconfig_module_module",
+              "baseTableName": "DATASOURCECONFIG_MODULE",
+              "baseColumnNames": "module_id",
+              "referencedTableName": "MODULE",
+              "referencedColumnNames": "id"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

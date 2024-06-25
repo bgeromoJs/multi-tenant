@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "DATASOURCECONFIG")
@@ -17,6 +18,17 @@ public class DataSourceConfig implements Serializable {
     private Long id;
     private String name;
     private String url;
+
+    @OneToMany(mappedBy = "dataSourceConfig", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<DataSourceConfigModule> dataSourceConfigModules;
+
+    public List<DataSourceConfigModule> getDataSourceConfigModules() {
+        return dataSourceConfigModules;
+    }
+
+    public void setDataSourceConfigModules(List<DataSourceConfigModule> dataSourceConfigModules) {
+        this.dataSourceConfigModules = dataSourceConfigModules;
+    }
 
     public Long getId() {
         return id;

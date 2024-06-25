@@ -2,6 +2,9 @@ package com.example.multitenant.config;
 
 import com.example.multitenant.config.multitenant.TenantSchemaResolver;
 import com.example.multitenant.config.multitenant.database.DataSourceBasedMultiTenantConnectionProviderImpl;
+import com.example.multitenant.config.multitenant.database.DataSourceConfig;
+import com.example.multitenant.config.multitenant.database.DataSourceConfigModule;
+import com.example.multitenant.config.multitenant.database.Module;
 import com.example.multitenant.config.multitenant.database.TenantDataSource;
 import liquibase.Contexts;
 import liquibase.Liquibase;
@@ -31,13 +34,18 @@ public class LiquibaseMultitenantUpdater {
         if (dataSource == null) {
             throw new IllegalArgumentException("No DataSource found for tenant: " + tenantId);
         }
+        DataSourceConfig dataSourceConfig = connectionProvider.getDataSourceConfigByName(tenantId);
         try (Connection connection = dataSource.getConnection()) {
-            // Configure o schema do inquilino
-            connection.setSchema(tenantId);
-            String changelogPath = String.format("db/changelog/changes/%s/changelog-master.json", tenantId);
-            // Configure e execute Liquibase
-            Liquibase liquibase = new Liquibase(changelogPath, new ClassLoaderResourceAccessor(), new JdbcConnection(connection));
-            liquibase.update(new Contexts(), new LabelExpression());
+            List<DataSourceConfigModule> dataSourceConfigModules = dataSourceConfig.getDataSourceConfigModules();
+            for (DataSourceConfigModule dataSourceConfigModule : dataSourceConfigModules) {
+                Module moduleName = connectionProvider.getModuleByName(dataSourceConfigModule.getModule().getName());
+                // Configure o schema do inquilino
+                connection.setSchema(tenantId);
+                String changelogPath = "db/changelog/changes/" + moduleName.getName() + "/changelog-master.json";
+                // Configure e execute Liquibase
+                Liquibase liquibase = new Liquibase(changelogPath, new ClassLoaderResourceAccessor(), new JdbcConnection(connection));
+                liquibase.update(new Contexts(), new LabelExpression());
+            }
         }
     }
 

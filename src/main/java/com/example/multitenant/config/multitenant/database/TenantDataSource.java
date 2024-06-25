@@ -31,6 +31,9 @@ public class TenantDataSource implements Serializable {
     @Autowired
     private DataSourceConfigRepository configRepo;
 
+    @Autowired
+    private ModuleRepository moduleRepo;
+
     public DataSource getDataSource(String name) {
         if (dataSources.get(name) != null) {
             return dataSources.get(name);
@@ -65,6 +68,14 @@ public class TenantDataSource implements Serializable {
             return ds;
         }
         return null;
+    }
+
+    public DataSourceConfig getDataSourceConfigByTenant(String name) {
+        return configRepo.findByName(name);
+    }
+
+    public Module getModuleByName(String name) {
+        return moduleRepo.findByName(name);
     }
 
 }
